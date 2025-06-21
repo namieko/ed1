@@ -1,0 +1,30 @@
+/*Elimina par*/
+int main ()
+{
+  int tam = 6;
+  Stack *s = create (tam);
+  Stack *temp = create (tam); //stack tempor�ria
+  srand(time(NULL));
+  int i, elem;
+  for (i = 0; i < tam; i++)
+  {
+    push (s, rand()%10);
+  }
+  print (s);
+
+  //Percorre a pilha "s" e armazena em "temp" todos os �mpares
+  while(!empty(s))
+  {
+    elem = pop(s);
+    if(elem % 2 != 0)
+        push(temp, elem);
+  }
+  //Devolve todos os �mpares de "temp" para "s"
+  while(!empty(temp))
+    push(s, pop(temp));
+
+  print (s);
+
+  destroy (s);
+  destroy (temp);
+}
